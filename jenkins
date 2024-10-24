@@ -8,7 +8,7 @@ pipeline{
             steps {
                 echo "Clone the Git repository"
                 git branch: 'main',
-                url: 'https://github.com/kpradeep710/task-5.git'
+                url: 'https://github.com/kpradeep710/task-2.git'
             }
         }
 
@@ -20,7 +20,7 @@ pipeline{
         }
 
         stage('SonarQube analysis') {
-                   //    def scannerHome = tool 'SonarScanner 6,2';
+                   //    def scannerHome = tool 'SonarScanner 6.2';
                 steps{
                     withSonarQubeEnv('Sonar-Server-10.6') { 
                              // If you have configured more than one global server connection, you can specify its name
@@ -29,15 +29,6 @@ pipeline{
                     }
                 }
             }                
-
-
-        stage('Deploy') {
-            steps {
-                echo "connected to ec2-instance and ready to deploy"
-                bat '''
-                scp -i C:/Documents/k.pradeepkumar.pem target/01-maven-web-app.war ec2-user@13.201.56.140:/home/ec2-user
-                '''
-            }
-        }
     }
+
 }
