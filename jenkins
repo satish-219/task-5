@@ -2,7 +2,6 @@ pipeline{
     agent any
   environment {
         PATH = "$PATH:/C:/Program Files/apache-maven-3.9.3-bin/apache-maven-3.9.3/bin"
-        PATH = "$PATH:/C:/Program Files/Java/jdk-17"
     }
  stages {
         stage('clone repo') {
